@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cloud Media</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self' file:; connect-src 'self' https://app.cloudmedia.com.tr wss://ezansocket-v6fk.onrender.com/; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://app.cloudmedia.com.tr; media-src 'self' blob: file: https://app.cloudmedia.com.tr https://api.iconify.design;"
+  />
+  
+  
+  </head>
+
+  <body style="margin: 0px">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
