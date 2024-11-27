@@ -13,11 +13,11 @@
     "build": "electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
+    "build:win": "npm run build && electron-builder --win --ia32",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux"
   },
-  "repository": "https://github.com/cloudmedi/cloudmedia-offlineplayer",
+  "repository": "https://github.com/cloudmedi/cloudmedia-offlineplayer-32bit",
   "publish": {
     "provider": "github",
     "releaseType": "release"
@@ -42,7 +42,7 @@
     "@electron-toolkit/eslint-config": "^1.0.2",
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "electron": "^28.2.6",
+    "electron": "^17.1.1",
     "electron-builder": "^24.13.3",
     "electron-vite": "^2.0.0",
     "eslint": "^8.56.0",
@@ -53,7 +53,13 @@
     "vite": "^5.0.12"
   },
   "build": {
+    "productName": "Cloud Media",
+    "appId": "com.cloudmedia.app",
+    "directories": {
+      "output": "dist"
+    },
     "mac": {
+      "icon": "build/icons/app-icon.icns",
       "entitlementsInherit": "build/entitlements.mac.plist",
       "extendInfo": {
         "NSCameraUsageDescription": "Application requests access to the device's camera.",
@@ -62,6 +68,12 @@
         "NSDownloadsFolderUsageDescription": "Application requests access to the user's Downloads folder."
       },
       "notarize": false
+    },
+    "win": {
+      "icon": "resources/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
     },
     "dmg": {
       "artifactName": "${name}-${version}.${ext}"
